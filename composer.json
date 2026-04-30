@@ -1,0 +1,43 @@
+{
+    "name":"brightcloudstudio/dd-directory",
+    "description":"Set up discussions to engage with your community!",
+    "keywords":["contao", "directory", "bright", "cloud", "studio"],
+    "type": "contao-bundle",
+    "homepage": "http://brightcloudstudio.com/",
+    "authors":[
+        {
+            "name": "Bright Cloud Studio",
+            "homepage": "https://brightcloudstudio.com",
+            "email": "mark@brightcloudstudio.com",
+            "role": "Developer"
+        }
+    ],
+    "support":{
+        "issues": "https://github.com/bright-cloud-studio/dd-directory/issues",
+        "source": "https://github.com/bright-cloud-studio/dd-directory"
+    },
+    "require":{
+        "php": "^8.2",
+        "contao/core-bundle": "^4.13 || ^5.0",
+    },
+    "require-dev": {
+        "contao/core-bundle": "^4.13 || ^5.0"
+      },
+    "extra":{
+        "contao-manager-plugin": "Bcs\\DDDirectoryBundle\\ContaoManager\\Plugin"
+    },
+    "autoload": {
+        "psr-4": {
+            "Bcs\\DDDirectoryBundle\\": "src"
+        },
+        "classmap": [
+            "src/Resources/contao"
+        ],
+        "exclude-from-classmap": [
+            "src/Resources/contao/config/",
+            "src/Resources/contao/dca/",
+            "src/Resources/contao/languages/",
+            "src/Resources/contao/templates/"
+        ]
+    }
+}
