@@ -73,7 +73,7 @@ $GLOBALS['TL_DCA']['tl_listing'] = array
             'exclude'                 => true,
             'search'                  => true,
             'eval'                    => array('rgxp'=>'date', 'doNotCopy'=>true, 'tl_class'=>'w50'),
-            'sql'                     => array('type'=>'integer', 'unsigned'=>true, 'default'=>0)
+            'sql'                     => array('type'=>'string', 'length'=>128, 'unsigned'=>true, 'default'=>0)
 		),
         'date_approved' => array
 		(
@@ -86,7 +86,7 @@ $GLOBALS['TL_DCA']['tl_listing'] = array
             (
                 array('Bcs\Backend\ListingsBackend', 'getDateApproved')
             ),
-            'sql'                     => array('type'=>'integer', 'unsigned'=>true, 'default'=>0)
+            'sql'                     => array('type'=>'string', 'length'=>128, 'unsigned'=>true, 'default'=>0)
 		),
 
         'first_name' => array
