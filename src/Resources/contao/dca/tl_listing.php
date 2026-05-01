@@ -184,23 +184,31 @@ $GLOBALS['TL_DCA']['tl_listing'] = array
             'label'                   => &$GLOBALS['TL_LANG']['tl_listing']['country'],
 			'inputType'               => 'select',
             'filter'                  => true,
-            'options'                 => array('approved' => 'Approved', 'unapproved' => 'Unapproved'),
-            'eval'                    => array('mandatory'=>true, 'tl_class'=>'w50'),
-            'sql'                     => array('type'=>'string', 'length'=>64, 'default'=>'')
+            'options_callback'        => array('Bcs\Backend\ListingsBackend', 'optionsCountries'),
+            'eval'                    => array('includeBlankOption'=>false, 'mandatory'=>true, 'chosen'=>true, 'tl_class'=>'w50'),
+            'sql'                     => array('type'=>'string', 'length'=>255, 'default'=>'')
 		),
-
-
-
-        'country' => array
+        'state' => array
 		(
-            'label'                     => &$GLOBALS['TL_LANG']['tl_listing']['country'],
-			'inputType'                 => 'select',
-			'default'                   => '',
-            'filter'                    => true,
-			'options_callback'          => array('Bcs\Backend\ListingsBackend', 'optionsCountries'),
-			'eval'                      => array('includeBlankOption'=>false, 'mandatory'=>true, 'chosen'=>true, 'tl_class'=>'w50'),
-			'sql'                       => "varchar(255) NOT NULL default ''"
+            'label'                   => &$GLOBALS['TL_LANG']['tl_listing']['state'],
+			'inputType'               => 'select',
+            'filter'                  => true,
+            'options_callback'        => array('Bcs\Backend\ListingsBackend', 'optionsStates'),
+            'eval'                    => array('includeBlankOption'=>true, 'chosen'=>true, 'tl_class'=>'w50'),
+            'sql'                     => array('type'=>'string', 'length'=>255, 'default'=>'')
 		),
+        'city' => array
+		(
+            'label'                   => &$GLOBALS['TL_LANG']['tl_listing']['city'],
+            'inputType'               => 'text',
+            'exclude'                 => true,
+			'search'                  => true,
+			'eval'                    => array('mandatory'=>true, 'tl_class'=>'w50'),
+			'sql'                     => array('type'=>'string', 'length'=>255, 'default'=>'')
+		),
+
+
+
 
 
 
