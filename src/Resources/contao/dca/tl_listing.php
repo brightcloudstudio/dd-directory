@@ -221,7 +221,7 @@ $GLOBALS['TL_DCA']['tl_listing'] = array
 			'inputType'               => 'checkbox',
             'options'                 => array('Office Address' => 'Office Address',  'Phone' => 'Phone',  'Email' => 'Email',  'Website' => 'Website'),
 			'eval'                    => array('submitOnChange'=>false, 'mandatory'=>true, 'multiple'=>true, 'tl_class' => 'clr'),
-			'sql'                     => array('type'=>'boolean')
+			'sql'                     => array('type'=>'blob')
 		),
         'service_area_worldwide' => array
 		(
