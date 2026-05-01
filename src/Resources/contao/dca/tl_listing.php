@@ -373,7 +373,7 @@ $GLOBALS['TL_DCA']['tl_listing'] = array
             'exclude'                 => true,
 			'search'                  => true,
 			'eval'                    => array('mandatory'=>true, 'tl_class'=>'w50'),
-			'sql'                     => array('type'=>'string')
+			'sql'                     => array('type'=>'string', 'length'=>1000)
 		),
         'internal_notes' => array
 		(
