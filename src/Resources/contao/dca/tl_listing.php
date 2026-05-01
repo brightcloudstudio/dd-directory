@@ -262,39 +262,97 @@ $GLOBALS['TL_DCA']['tl_listing'] = array
             'sql'                     => array('type'=>'string', 'length'=>255, 'default'=>'')
 		),
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-        
-
-
-        
-        
-        'title' => array
+        'profession' => array
 		(
-			'sorting'                 => true,
-			'flag'                    => DataContainer::SORT_INITIAL_LETTER_ASC,
-			'search'                  => true,
-			'inputType'               => 'text',
-			'eval'                    => array('maxlength'=>255, 'tl_class'=>'w50'),
-			'sql'                     => array('type'=>'string', 'length'=>255, 'default'=>''),
+            'label'                   => &$GLOBALS['TL_LANG']['tl_listing']['profession'],
+			'inputType'               => 'checkbox',
+            'options_callback'        => array('Bcs\Backend\ListingsBackend', 'getProfessions'),
+			'eval'                    => array('mandatory'=>true, 'multiple'=>true, 'tl_class' => 'clr'),
+			'sql'                     => array('type'=>'blob')
 		),
 
-
-
-
+        'specialties_1' => array
+		(
+            'label'                   => &$GLOBALS['TL_LANG']['tl_listing']['specialties_1'],
+            'inputType'               => 'text',
+            'exclude'                 => true,
+			'search'                  => true,
+			'eval'                    => array('mandatory'=>false, 'tl_class'=>'w50'),
+			'sql'                     => array('type'=>'string', 'length'=>255, 'default'=>'')
+		),
+        'specialties_2' => array
+		(
+            'label'                   => &$GLOBALS['TL_LANG']['tl_listing']['specialties_2'],
+            'inputType'               => 'text',
+            'exclude'                 => true,
+			'search'                  => true,
+			'eval'                    => array('mandatory'=>false, 'tl_class'=>'w50'),
+			'sql'                     => array('type'=>'string', 'length'=>255, 'default'=>'')
+		),
+        'specialties_3' => array
+		(
+            'label'                   => &$GLOBALS['TL_LANG']['tl_listing']['specialties_3'],
+            'inputType'               => 'text',
+            'exclude'                 => true,
+			'search'                  => true,
+			'eval'                    => array('mandatory'=>false, 'tl_class'=>'w50'),
+			'sql'                     => array('type'=>'string', 'length'=>255, 'default'=>'')
+		),
+        'specialties_4' => array
+		(
+            'label'                   => &$GLOBALS['TL_LANG']['tl_listing']['specialties_4'],
+            'inputType'               => 'text',
+            'exclude'                 => true,
+			'search'                  => true,
+			'eval'                    => array('mandatory'=>false, 'tl_class'=>'w50'),
+			'sql'                     => array('type'=>'string', 'length'=>255, 'default'=>'')
+		),
 
         
+        'remote_consultations' => array
+		(
+            'label'                   => &$GLOBALS['TL_LANG']['tl_listing']['remote_consultations'],
+			'filter'                  => true,
+			'inputType'               => 'radio',
+			'options'                 => array('yes' => 'Yes', 'no' => 'No'),
+			'eval'                    => array('mandatory'=>true, 'tl_class'=>'w50'),
+			'sql'                     => array('type'=>'string', 'length'=>32, 'default'=>'')
+		),
+        'provide_mms' => array
+		(
+            'label'                   => &$GLOBALS['TL_LANG']['tl_listing']['provide_mms'],
+			'filter'                  => true,
+			'inputType'               => 'radio',
+			'options'                 => array('yes' => 'Yes', 'no' => 'No'),
+			'eval'                    => array('mandatory'=>true, 'tl_class'=>'w50'),
+			'sql'                     => array('type'=>'string', 'length'=>32, 'default'=>'')
+		),
+        'provide_cas' => array
+		(
+            'label'                   => &$GLOBALS['TL_LANG']['tl_listing']['provide_cas'],
+			'filter'                  => true,
+			'inputType'               => 'radio',
+			'options'                 => array('yes' => 'Yes', 'no' => 'No'),
+			'eval'                    => array('mandatory'=>true, 'tl_class'=>'w50'),
+			'sql'                     => array('type'=>'string', 'length'=>32, 'default'=>'')
+		),
+        'training_program' => array
+		(
+            'label'                   => &$GLOBALS['TL_LANG']['tl_listing']['training_program'],
+			'filter'                  => true,
+			'inputType'               => 'radio',
+			'options'                 => array('yes' => 'Yes', 'no' => 'No'),
+			'eval'                    => array('mandatory'=>true, 'tl_class'=>'w50'),
+			'sql'                     => array('type'=>'string', 'length'=>32, 'default'=>'')
+		),
+        'describe_practice' => array
+		(
+            'label'                   => &$GLOBALS['TL_LANG']['tl_listing']['describe_practice'],
+            'inputType'               => 'textarea',
+            'exclude'                 => true,
+            'search'                  => true,
+            'eval'                    => array('mandatory' => true, 'tl_class'=>'clr'),
+            'sql'                     => array('type'=>'string')
+		)
 	)
 );
