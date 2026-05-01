@@ -1,5 +1,7 @@
 <?php
 
+use Contao\DC_Table;
+
 $GLOBALS['TL_DCA']['tl_listing'] = array
 (
 	// Config
@@ -54,8 +56,6 @@ $GLOBALS['TL_DCA']['tl_listing'] = array
 		(
 			'sql'                     => "int(10) unsigned NOT NULL default 0"
 		),
-
-
         'approved' => array
 		(
             'label'                   => &$GLOBALS['TL_LANG']['tl_listing']['approved'],
@@ -65,7 +65,6 @@ $GLOBALS['TL_DCA']['tl_listing'] = array
             'eval'                    => array('mandatory'=>true, 'tl_class'=>'w50'),
             'sql'                     => array('type'=>'string', 'length'=>64, 'default'=>'')
 		),
-        
         'date_created' => array
 		(
             'label'                   => &$GLOBALS['TL_LANG']['tl_listing']['date_created'],
@@ -223,8 +222,6 @@ $GLOBALS['TL_DCA']['tl_listing'] = array
 			'eval'                    => array('submitOnChange'=>false, 'mandatory'=>true, 'multiple'=>true, 'tl_class' => 'clr'),
 			'sql'                     => array('type'=>'boolean')
 		),
-
-        
         'service_area_worldwide' => array
 		(
             'label'                   => &$GLOBALS['TL_LANG']['tl_listing']['service_area_worldwide'],
@@ -261,7 +258,6 @@ $GLOBALS['TL_DCA']['tl_listing'] = array
             'eval'                    => array('includeBlankOption'=>false, 'multiple'=>true, 'mandatory'=>false, 'chosen'=>true, 'tl_class'=>'w50'),
             'sql'                     => array('type'=>'string', 'length'=>255, 'default'=>'')
 		),
-
         'profession' => array
 		(
             'label'                   => &$GLOBALS['TL_LANG']['tl_listing']['profession'],
@@ -270,7 +266,6 @@ $GLOBALS['TL_DCA']['tl_listing'] = array
 			'eval'                    => array('mandatory'=>true, 'multiple'=>true, 'tl_class' => 'clr'),
 			'sql'                     => array('type'=>'blob')
 		),
-
         'specialties_1' => array
 		(
             'label'                   => &$GLOBALS['TL_LANG']['tl_listing']['specialties_1'],
@@ -307,8 +302,24 @@ $GLOBALS['TL_DCA']['tl_listing'] = array
 			'eval'                    => array('mandatory'=>false, 'tl_class'=>'w50'),
 			'sql'                     => array('type'=>'string', 'length'=>255, 'default'=>'')
 		),
-
-        
+        'language' => array
+		(
+            'label'                   => &$GLOBALS['TL_LANG']['tl_listing']['language'],
+            'inputType'               => 'text',
+            'exclude'                 => true,
+			'search'                  => true,
+			'eval'                    => array('mandatory'=>true, 'tl_class'=>'w50'),
+			'sql'                     => array('type'=>'string', 'length'=>255, 'default'=>'')
+		),
+        'practice_area' => array
+		(
+            'label'                   => &$GLOBALS['TL_LANG']['tl_listing']['practice_area'],
+            'inputType'               => 'text',
+            'exclude'                 => true,
+			'search'                  => true,
+			'eval'                    => array('mandatory'=>true, 'tl_class'=>'w50'),
+			'sql'                     => array('type'=>'string', 'length'=>255, 'default'=>'')
+		),
         'remote_consultations' => array
 		(
             'label'                   => &$GLOBALS['TL_LANG']['tl_listing']['remote_consultations'],
@@ -353,6 +364,34 @@ $GLOBALS['TL_DCA']['tl_listing'] = array
             'search'                  => true,
             'eval'                    => array('mandatory' => true, 'tl_class'=>'clr'),
             'sql'                     => array('type'=>'string')
+		),
+        'specific_services' => array
+		(
+            'label'                   => &$GLOBALS['TL_LANG']['tl_listing']['specific_services'],
+            'inputType'               => 'text',
+            'exclude'                 => true,
+			'search'                  => true,
+			'eval'                    => array('mandatory'=>true, 'tl_class'=>'w50'),
+			'sql'                     => array('type'=>'string')
+		),
+        'internal_notes' => array
+		(
+            'label'                   => &$GLOBALS['TL_LANG']['tl_listing']['internal_notes'],
+            'inputType'               => 'textarea',
+            'exclude'                 => true,
+            'search'                  => true,
+            'eval'                    => array('rte' => 'tinyMCE', 'tl_class'=>'long'),
+            'sql'                     => array('type'=>'string')
+		),
+        'published' => array
+		(
+            'label'                     => &$GLOBALS['TL_LANG']['tl_listing']['published'],
+			'toggle'                  => true,
+			'filter'                  => true,
+			'flag'                    => DataContainer::SORT_INITIAL_LETTER_ASC,
+			'inputType'               => 'checkbox',
+			'eval'                    => array('doNotCopy'=>true, 'submitOnChange'=>true),
+			'sql'                     => array('type' => 'boolean', 'default' => false)
 		)
 	)
 );
