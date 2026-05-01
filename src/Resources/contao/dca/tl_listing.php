@@ -206,6 +206,70 @@ $GLOBALS['TL_DCA']['tl_listing'] = array
 			'eval'                    => array('mandatory'=>true, 'tl_class'=>'w50'),
 			'sql'                     => array('type'=>'string', 'length'=>255, 'default'=>'')
 		),
+        'zip' => array
+		(
+            'label'                   => &$GLOBALS['TL_LANG']['tl_listing']['zip'],
+            'inputType'               => 'text',
+            'exclude'                 => true,
+			'search'                  => true,
+			'eval'                    => array('mandatory'=>false, 'tl_class'=>'w50'),
+			'sql'                     => array('type'=>'string', 'length'=>255, 'default'=>'')
+		),
+        'how_to_contact' => array
+		(
+            'label'                   => &$GLOBALS['TL_LANG']['tl_listing']['how_to_contact'],
+			'inputType'               => 'checkbox',
+            'options'                 => array('Office Address' => 'Office Address',  'Phone' => 'Phone',  'Email' => 'Email',  'Website' => 'Website'),
+			'eval'                    => array('submitOnChange'=>false, 'mandatory'=>true, 'multiple'=>true, 'tl_class' => 'clr'),
+			'sql'                     => array('type'=>'boolean')
+		),
+
+        
+        'service_area_worldwide' => array
+		(
+            'label'                   => &$GLOBALS['TL_LANG']['tl_listing']['service_area_worldwide'],
+			'filter'                  => true,
+			'inputType'               => 'radio',
+			'options'                 => array('yes' => 'Yes', 'no' => 'No'),
+			'eval'                    => array('mandatory'=>true, 'tl_class'=>'w50'),
+			'sql'                     => array('type'=>'string', 'length'=>32, 'default'=>'')
+		),
+        'service_area_country' => array
+		(
+            'label'                   => &$GLOBALS['TL_LANG']['tl_listing']['service_area_country'],
+			'inputType'               => 'select',
+            'filter'                  => true,
+            'options_callback'        => array('Bcs\Backend\ListingsBackend', 'optionsServiceAreaCountry'),
+            'eval'                    => array('includeBlankOption'=>false, 'multiple'=>true, 'mandatory'=>true, 'chosen'=>true, 'tl_class'=>'w50'),
+            'sql'                     => array('type'=>'string', 'length'=>255, 'default'=>'')
+		),
+        'service_area_state' => array
+		(
+            'label'                   => &$GLOBALS['TL_LANG']['tl_listing']['service_area_state'],
+			'inputType'               => 'select',
+            'filter'                  => true,
+            'options_callback'        => array('Bcs\Backend\ListingsBackend', 'optionsServiceAreaStates'),
+            'eval'                    => array('includeBlankOption'=>false, 'multiple'=>true, 'mandatory'=>false, 'chosen'=>true, 'tl_class'=>'w50'),
+            'sql'                     => array('type'=>'string', 'length'=>255, 'default'=>'')
+		),
+        'service_area_province' => array
+		(
+            'label'                   => &$GLOBALS['TL_LANG']['tl_listing']['service_area_province'],
+			'inputType'               => 'select',
+            'filter'                  => true,
+            'options_callback'        => array('Bcs\Backend\ListingsBackend', 'optionsServiceAreaProvinces'),
+            'eval'                    => array('includeBlankOption'=>false, 'multiple'=>true, 'mandatory'=>false, 'chosen'=>true, 'tl_class'=>'w50'),
+            'sql'                     => array('type'=>'string', 'length'=>255, 'default'=>'')
+		),
+
+
+
+
+
+
+
+
+
 
 
 
