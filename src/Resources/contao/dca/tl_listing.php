@@ -382,7 +382,7 @@ $GLOBALS['TL_DCA']['tl_listing'] = array
             'exclude'                 => true,
             'search'                  => true,
             'eval'                    => array('rte' => 'tinyMCE', 'tl_class'=>'long'),
-            'sql'                     => array('type'=>'string', 'length'=>1000)
+            'sql'                     => array('type'=>'string', 'length'=>1000, 'default'=>'')
 		),
         'published' => array
 		(
