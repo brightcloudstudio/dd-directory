@@ -3,6 +3,6 @@ services:
         autowire: true
         autoconfigure: true
 
-    BCS\DDDirectory\EventListener\ProcessFormDataListener:
+    Bcs\DDDirectoryBundle\EventListener\ProcessFormDataListener:
         arguments:
             $projectDir: '%kernel.project_dir%'
