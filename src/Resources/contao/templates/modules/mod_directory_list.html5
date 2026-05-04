@@ -1,0 +1,105 @@
+<div class="<?= $this->class ?>" <?= $this->cssID ?>>
+
+	<form class="form_filters" id="form_filters">
+		<div class="filters_wrapper">
+			
+			<div class="option_country">
+				<label for="filter_country">Search by Country</label>
+				<select class="filter_country" id="filter_country" name="country">
+				</select>
+			</div>
+			
+			<div class="option_state_prov">
+				<label for="filter_state_prov">Search by State/Province</label>
+				<select class="filter_state_prov" id="filter_state_prov" name="state_prov" disabled>
+				</select>
+			</div>
+			
+			<div class="option_state">
+				<label for="filter_state">Search by State</label>
+				<select class="filter_state" id="filter_state" name="state">
+				</select>
+			</div>
+			
+			<div class="option_providence">
+				<label for="filter_providence">Search by Province</label>
+				<select class="filter_providence" id="filter_providence" name="providence">
+				</select>
+			</div>
+			
+			<div class="option_professions">
+				<label for="filter_professions">Search by Profession</label>
+				<select class="filter_professions" id="filter_professions" name="professions[]" multiple="professions">
+					<option value="Psychiatrist">Psychiatrist</option>
+					<option value="Psychiatric nurse practitioner">Psychiatric nurse practitioner</option>
+					<option value="Medical nurse practitioner">Medical nurse practitioner</option>
+					<option value="Registered nurse">Registered nurse</option>
+					<option value="Licensed practical nurse">Licensed practical nurse</option>
+					<option value="Physician - internal medicine">Physician - internal medicine</option>
+					<option value="Physician - family medicine">Physician - family medicine</option>
+					<option value="Physician - obesity medicine">Physician - obesity medicine</option>
+					<option value="Neurologist">Neurologist</option>
+					<option value="Physician - specialist">Physician - specialist</option>
+					<option value="Physician assistant">Physician assistant</option>
+					<option value="Registered dietitian">Registered dietitian</option>
+					<option value="Dietitian / Nutritionist">Dietitian / Nutritionist</option>
+					<option value="Nutritional therapist">Nutritional therapist</option>
+					<option value="Naturopathic doctor">Naturopathic doctor</option>
+					<option value="Psychologist">Psychologist</option>
+					<option value="Social worker">Social worker</option>
+					<option value="Licensed counselor">Licensed counselor</option>
+					<option value="Marriage and family therapist">Marriage and family therapist</option>
+					<option value="Food addiction specialist">Food addiction specialist</option>
+					<option value="Health coach">Health coach</option>
+					<option value="Peer support specialist">Peer support specialist</option>
+				</select>
+			</div>
+			
+			<div class="option_checkboxes">
+				<label class="checkbox_label" for="filter_rc">Refine Your Search</label>
+				<div class="remote_consultation">
+					<input type="checkbox" class="filter_rc" id="filter_rc" name="remote_consultation" value="remote_consultation">
+					<label for="filter_rc">Remote Consultations</label><br>
+				</div>
+				<div class="medication_management">
+					<input type="checkbox" class="filter_mm" id="filter_mm" name="medication_management" value="medication_management">
+					<label for="filter_mm">Medication Management</label><br>
+				</div>
+				<div class="child_services">
+					<input type="checkbox" class="filter_cs" id="filter_cs" name="child_services" value="child_services">
+					<label for="filter_cs"> Child/Adolescent Services</label><br>
+				</div>
+			</div>
+			
+			<div class="reset_filter">
+				<strong><a onclick="resetFilter()">Reset Search</a></strong>
+			</div>
+	
+		</div>
+	</form>
+
+	<div class="marbot30 key">
+		<img src="files/content/directory/training_badge.png">
+		<p>Indicates provider has completed Dr. Ede’s Ketogenic Diets for Mental Health clinician training program.</p>
+	</div>
+
+
+	<div class="listings_wrapper">
+		
+		<div class="no_results">
+			No providers meet your search criteria. Please broaden your search.
+		</div>
+		
+		
+		<?php if (empty($this->listings)): ?>
+			<p class="empty">No Listings Found!</p>
+		<?php else: ?>
+	
+			<?php foreach($this->listings as $listing): ?>
+				<?= implode('', $listing['listings']) ?>
+			<?php endforeach; ?>
+	
+		<?php endif; ?>
+	</div>
+	
+</div>
