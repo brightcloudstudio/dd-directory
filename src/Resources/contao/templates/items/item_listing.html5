@@ -1,0 +1,201 @@
+<?php
+	/* Professions is passed here serialized */
+	$professions = unserialize($this->profession);
+	$how_to_contact = unserialize($this->how_to_contact);
+?>
+
+<!-- Listing Wrapper with custom data types for the filter -->
+<div class="item_listing id_<?= $this->id ?> flex_wrapper" id="item_listing id_<?= $this->id ?>" data-worldwide="<?= $this->worldwide ?>" data-country="<?= $this->service_country ?>" data-state="<?= $this->service_state ?>,<?= $this->service_province ?>" data-professions="<?php
+		$professionsTotal = sizeof($professions);
+		$professionsCount = 0;
+		foreach($professions as $profession) {
+			$professionsCount++;
+			if($professionsCount == $professionsTotal) {
+				echo $profession;
+			} else {
+				echo $profession . "|";
+			}
+		}
+	?>" data-rc="<?= $this->remote_consultations ?>" data-mm="<?= $this->provide_mms ?>" data-cs="<?= $this->provide_cas ?>" data-practice-country="<?= $this->country ?>" data-practice-state="<?= $this->state ?>">
+	
+	
+	<!-- Left Side -->
+	<div class="size75">
+	
+		<!-- Name, Credentials -->
+		<?php if($this->credentials != '' ) { ?>
+			<h3 class="name"><?= $this->first_name ?> <?= $this->last_name ?>, <span class="credentials"><?= $this->credentials ?></span></h3>
+		<?php } else { ?>
+			<h3 class="name"><?= $this->first_name ?> <?= $this->last_name ?></h3>
+		<?php } ?>
+		
+		<!-- Address -->
+		<?php
+			// Only display State for USA and Canada
+			if($this->country == 'USA' || $this->country == 'Canada') {
+				?> <div class="address"><?= $this->city ?>, <?= $this->state ?>, <?= $this->country ?></div> <?
+			} else {
+			 	?> <div class="address"><?= $this->city ?>, <?= $this->country ?></div> <?php
+			}
+		
+		?>
+		
+
+		<!-- Professions Section -->
+		<div class="professions">
+		<strong>Profession:</strong>
+		<?php
+			$professionsCount = 1;
+			foreach($professions as $profession) {
+				// if this is the last profession dont add a comma
+				if($professionsCount == count($professions))
+					echo $profession;
+				else
+					echo $profession . ', ';
+				$professionsCount++;
+			}
+		?>
+		</div> <!-- End Professions Section -->
+		
+		<!-- Specialties -->
+		<?php
+			$specialties = [];
+			if(!empty($this->specialties_1))
+				array_push($specialties, $this->specialties_1);
+			if(!empty($this->specialties_2))
+				array_push($specialties, $this->specialties_2);
+			if(!empty($this->specialties_3))
+				array_push($specialties, $this->specialties_3);
+			if(!empty($this->specialties_4))
+				array_push($specialties, $this->specialties_4);
+				
+			// if we have specialties
+			if(!empty($specialties)) { ?>
+				<div class="specialties">
+					<strong>Specialties: </strong>
+					<?php
+						$specialtiesCount = 1;
+						foreach ($specialties as $specialty) {
+							// if this is the last entry dont add a comma
+							if($specialtiesCount == count($specialties))
+								echo $specialty;
+							else
+								echo $specialty . ', ';
+							$specialtiesCount++;
+						}
+					?>
+				</div>
+			<?php }
+		?> <!-- End Specialties -->
+		
+		<!-- Offers Section -->
+		<?php 
+			$offers = [];
+			if($this->remote_consultations == "yes")
+				array_push($offers, "remote consultations");
+			if($this->provide_mms == "yes")
+				array_push($offers, "medication management");
+			if($this->provide_cas == "yes")
+				array_push($offers, "child/adolescent services");
+			
+			// if we have offers
+			if(!empty($offers)) { ?>
+				<div class="offers">
+					<strong>Additional Services: </strong>Offers 
+					<?php
+						$offerCount = 1;
+						foreach ($offers as $offer) {
+							// if this is the last entry dont add a comma
+							if($offerCount == count($offers))
+								echo $offer;
+							else
+								echo $offer . ', ';
+							$offerCount++;
+						}
+					?>
+				</div>
+			<?php }
+		?> <!-- End Offers Section -->
+		
+		
+		<!-- Languages -->
+		<div class="languages">
+			<strong>Languages: </strong>
+			<?php echo $this->language; ?>
+		</div>
+		
+		<!-- Website Section -->
+		<?php
+			if(!empty($this->website)) {
+				?><a href="<?= $this->website ?>" class="website" target="_blank" rel="nofollow"><?= $this->website ?></a><?php
+			}
+			
+		?>
+		
+
+		
+		<!-- Accordion Section -->
+		<section class="ce_accordionStart ce_accordion block">
+			<div class="toggler ui-accordion-header ui-corner-top ui-state-default ui-accordion-icons ui-accordion-header-collapsed ui-corner-all" role="tab" id="ui-id-<?= $this->id ?>" aria-controls="ui-id-<?= $this->id ?>" aria-selected="false" aria-expanded="false" tabindex="0">
+				
+				<span class="accordion_message"><i class="fa-thin fa-chevron-down"></i> Practice and Contact Information <i class="fa-light fa-chevron-down"></i></span>
+				
+				
+			</div>
+			<div class="accordion ui-accordion-content ui-corner-bottom ui-helper-reset ui-widget-content" id="ui-id-<?= $this->id ?>" aria-labelledby="ui-id-1" role="tabpanel" aria-hidden="true" style="display: none;">
+				<div>
+					<!-- Description -->
+					<div class="description"><?= $this->describe_practice ?></div>
+					
+					<!-- Contact By Office Address -->
+					<?php if(in_array('Office Address', $how_to_contact)) { ?>
+						<div class="contact">
+							<strong>Contact: </strong><br>
+							
+							<?php
+								if($this->address_1 != '')
+									echo $this->address_1 . '<br>';
+								if($this->address_2 != '')
+									echo $this->address_2 . '<br>';
+								if($this->country == 'Other')
+									echo $this->city . ', ' . $this->country . ', ' . $this->zip;
+								else
+									echo $this->city . ', ' . $this->state . ', ' . $this->country . ', ' . $this->zip;
+							?>
+						</div>							
+					<?php } ?>
+					
+					<!-- Start Contact -->
+				<?php if(in_array('Phone', $how_to_contact)) { ?>
+					<div class="contact">
+						<a href="<?= 'tel:' . preg_replace('/[^0-9]/', '', $this->phone); ?>"><?= $this->phone ?></a>
+					</div>							
+				<?php } ?>
+				
+				<!-- Contact By Email -->
+				<?php if(in_array('Email', $how_to_contact)) { ?>
+					<div class="contact">
+						<a href="<?= 'mailto:' . $this->email_public; ?>">Email</a>
+					</div>							
+				<?php } ?>
+				<!-- End Contact Section -->
+
+				</div>
+			</div>
+		</section> <!-- End Accordion Section -->
+		
+		
+		
+		
+
+	</div><!-- End Left Side -->
+	
+	<!-- Right Side -->
+	<div class="size25 flex_wrapper">
+		<?php if($this->training_program == "yes") { ?>
+		<div class="training_program"><img src="files/content/directory/training_badge.png"></div>
+		<?php } ?>
+		<div class="photo"><img src="<?= \Contao\FilesModel::findByUuid($this->photo)->path ?>"></div>
+	</div> <!-- End Right Side -->
+
+</div> <!-- End Listing Wrapper -->
