@@ -1,0 +1,8 @@
+services:
+    _defaults:
+        autowire: true
+        autoconfigure: true
+
+    BCS\DDDirectory\EventListener\ProcessFormDataListener:
+        arguments:
+            $projectDir: '%kernel.project_dir%'
