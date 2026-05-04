@@ -21,7 +21,7 @@ class ProcessFormDataListener
     {
     }
 
-    public function __invoke(array &$submittedData, array $labels, array $fields, Form $form): void
+    public function __invoke(array $submittedData, array $formData, ?array $files, array $labels, Form $form): void
     {
         echo "HOOKED!";
         die();
