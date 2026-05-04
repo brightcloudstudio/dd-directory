@@ -257,7 +257,7 @@ $GLOBALS['TL_DCA']['tl_listing'] = array
             'filter'                  => true,
             'options_callback'        => array('Bcs\Backend\ListingsBackend', 'optionsServiceAreaProvinces'),
             'eval'                    => array('includeBlankOption'=>false, 'multiple'=>true, 'mandatory'=>false, 'chosen'=>true, 'tl_class'=>'w50'),
-            'sql'                     => array('type'=>'string', 'length'=>255, 'default'=>'')
+            'sql'                     => array('type'=>'text', 'notnull'=>false)
 		),
         'profession' => array
 		(
