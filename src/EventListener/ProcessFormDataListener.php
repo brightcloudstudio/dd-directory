@@ -5,7 +5,7 @@
  * @author     Bright Cloud Studio
  */
     
-namespace BCS\ContaoSignatureFormField\EventListener;
+namespace BCS\DDDirectory\EventListener;
 
 use Contao\CoreBundle\DependencyInjection\Attribute\AsHook;
 use Contao\Form;
