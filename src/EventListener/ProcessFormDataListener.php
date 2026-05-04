@@ -5,7 +5,7 @@
  * @author     Bright Cloud Studio
  */
     
-namespace BCS\DDDirectory\EventListener;
+namespace BCS\DDDirectoryBundle\EventListener;
 
 use Contao\CoreBundle\DependencyInjection\Attribute\AsHook;
 use Contao\Form;
